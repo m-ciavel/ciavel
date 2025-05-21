@@ -3,6 +3,8 @@ import { Home, About, Projects, Contact } from './pages';
 import Navbar from './components/Navbar';
 
 const App = () => {
+  console.log("connected");
+
   return (
     <main className="bg-[#202221] text-white">
         <Router>
