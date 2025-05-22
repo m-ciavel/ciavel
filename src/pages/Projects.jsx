@@ -12,11 +12,6 @@ import bookNookImg from '../assets/2d/BookNook.png';
 import netWoinkGif from '../assets/2d/NetWoink.gif';
 
 const Projects = () => {
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -40 },
-  };
   const [scrollY, setScrollY] = useState(0);
 
   const projects = [

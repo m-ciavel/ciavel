@@ -2,12 +2,6 @@ import { useState } from 'react';
 import { FaEnvelope, FaGithubAlt, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 const Contact = () => {
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -40 },
-  };
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
