@@ -53,7 +53,7 @@ const Home = () => {
               castShadow 
             />
 
-          <Sky isRotating={isRotating}/>
+          <Sky />
           <Greenhouse 
             position = {greenhousePosition}
             scale = {greenhouseScale}
