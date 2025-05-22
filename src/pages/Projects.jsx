@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Color, Points, BufferGeometry, Float32BufferAttribute, PointsMaterial } from 'three'; 
+import { Color, BufferGeometry, Float32BufferAttribute, } from 'three'; 
+import '../index.css';
 import Loader from '../components/Loader'
 import ProjectCard from '../components/ProjectCard';
 
@@ -11,6 +12,11 @@ import bookNookImg from '../assets/2d/BookNook.png';
 import netWoinkGif from '../assets/2d/NetWoink.gif';
 
 const Projects = () => {
+  const pageVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -40 },
+  };
   const [scrollY, setScrollY] = useState(0);
 
   const projects = [
@@ -18,7 +24,7 @@ const Projects = () => {
       title: 'ciavel.',
       description: 'Flashcard system to make studying engaging. You are here right now.',
       image: ciavelImg,
-      tags:['React', 'Three.js', 'Vite', 'MongoDB', 'FastAPI', 'Vite', 'Chart.js'],
+      tags:['React', 'Three.js', 'Tailwind CSS', 'Vite', 'Chart.js'],
       link: 'https://github.com/ZAAALJLJ/ClashCards',
     },
     {
@@ -107,40 +113,46 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="w-full h-screen relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Canvas
-        camera={{ near: 0.1, far: 1000 }}
-        >
-          <Suspense fallback={<Loader />}>
-            <ambientLight intensity={0.2} />
-            <hemisphereLight 
-              skyColor={new Color(0x1e2a47)}   
-              groundColor={new Color(0x2e3d56)}  
-              intensity={0.2}                        
-            />
-            <directionalLight 
-              position={[0, 10, 5]} 
-              intensity={0.5}  
-              castShadow 
-            />
 
-             <Stars />
-          </Suspense>
-        </Canvas>
-      </div>
-      
+      <section className="w-full h-screen relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Canvas
+          camera={{ near: 0.1, far: 1000 }}
+          >
+            <Suspense fallback={<Loader />}>
+              <ambientLight intensity={0.2} />
+              <hemisphereLight 
+                skyColor={new Color(0x1e2a47)}   
+                groundColor={new Color(0x2e3d56)}  
+                intensity={0.2}                        
+              />
+              <directionalLight 
+                position={[0, 10, 5]} 
+                intensity={0.5}  
+                castShadow 
+              />
 
-       <div className="relative z-10 px-4 py-20 max-h-screen overflow-y-auto overflow-x-hidden">
-        <h2 className="text-3xl font-bold text-center text-white mb-10">My Projects</h2>
-        <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
+              <Stars />
+            </Suspense>
+          </Canvas>
         </div>
-      </div>
+        
 
-    </section>
+        <div className="relative z-10 px-4 py-20 max-h-screen overflow-y-auto overflow-x-hidden">
+          <h2 className="text-3xl font-bold text-center text-white mb-10 group">
+            Projects I've Worked On
+            <span className="block w-[30%] h-1 mt-2 bg-gradient-to-r from-amber-400 via-yellow-300 to-yellow-500 opacity-0 group-hover:opacity-100 transition-all duration-300 mx-auto"></span>
+          </h2>
+          
+          <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
+          </div>
+        </div>
+
+      </section>
+
   )
 }
 

@@ -2,8 +2,47 @@
 
 h1, h2 {
   transition: transform 0.3s ease-in-out;
+  cursor: default;
 }
 
 h1:hover, h2:hover {
   transform: scale(1.1);
+}
+
+.wave-svg {
+  height: 60%; 
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.5));
+}
+
+@media (max-width: 768px) {
+  .wave-svg {
+    height: 30%; 
+  }
+}
+
+@keyframes fallFromTop {
+  0% {
+    transform: translateY(-50px); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1; 
+  }
+}
+
+.animate-fall {
+  animation: fallFromTop 1s ease-out forwards; 
+}
+
+.animate-fall-overview {
+  animation: fallFromTop 1s ease-out forwards;
+}
+
+.animate-fall-techstack {
+  animation: fallFromTop 1.4s ease-out forwards; 
+}
+
+.animate-fall-other-interests {
+  animation: fallFromTop 1.8s ease-out forwards; 
 }

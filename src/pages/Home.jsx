@@ -7,11 +7,17 @@ import Sky from '../models/Sky';
 import HomeInfo from '../components/HomeInfo';
 
 const Home = () => {
+  const pageVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -40 },
+  };
   const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
   const [greenhouseScale, setScale] = useState([2, 2, 2])
   const [greenhousePosition, setPosition] = useState([0, -6.5, -43])
   const [greenhouseRotation, setRotation] = useState([0.1, 4.7, 0])
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const adjustGreenhouseForScreenSize = () => {
     if (window.innerWidth < 768) {
@@ -30,11 +36,14 @@ const Home = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const handleModelLoad = () => {
+    setIsLoaded(true);
+  };
 
   return (
     <section className="w-full h-screen relative overflow-hidden">
       <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        {currentStage && <HomeInfo  currentStage={currentStage} />}
+         {isLoaded && currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
       <Canvas 
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
@@ -55,17 +64,18 @@ const Home = () => {
 
           <Sky />
           <Greenhouse 
-            position = {greenhousePosition}
-            scale = {greenhouseScale}
-            rotation = {greenhouseRotation}
-            isRotating = {isRotating}
-            setIsRotating = {setIsRotating}
+            onLoad={handleModelLoad} 
+            position={greenhousePosition}
+            scale={greenhouseScale}
+            rotation={greenhouseRotation}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
           />
         </Suspense>
       </Canvas>
 
-       <div className="absolute bottom-5 left-0 right-0 z-20 text-center text-gray-500 text-xs">
+      <div className="absolute bottom-5 left-0 right-0 z-20 text-center text-gray-500 text-xs">
           <p>
             "Stylized Mangrove Greenhouse" (https://skfb.ly/ovoBo) by Bársh is licensed under 
             <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
@@ -75,6 +85,7 @@ const Home = () => {
         </div>
 
     </section>
+
   )
 }
 

@@ -4,7 +4,7 @@ import arrow  from '../assets/icons/arrow.svg'
 const InfoBox = ({ text, link, btnText }) => (
     <div className='info-box flex justify-center items-center px-4 py-8'>
         <div className="relative flex justify-center items-center px-4 py-8">
-            <div className="bg-white rounded-lg shadow-md p-6 w-full sm:max-w-md md:max-w-3xl text-center  cursor-pointer">
+            <div className="bg-white rounded-lg shadow-md p-6 w-full sm:max-w-md md:max-w-3xl text-center  cursor-default" style={{ userSelect: 'none' }}>
                 <p className='font-medium sm:text-xl text-center sm:leading-snug text-gray-900'>{text}</p>
             </div>
             {btnText && (
@@ -23,7 +23,7 @@ const InfoBox = ({ text, link, btnText }) => (
 const renderContent = {
     1: (
         <div className="flex justify-center items-center px-4 py-8">
-            <div className="bg-white rounded-lg shadow-md p-6 w-full sm:max-w-md md:max-w-3xl text-center  cursor-pointer">
+            <div className="bg-white rounded-lg shadow-md p-6 w-full sm:max-w-md md:max-w-3xl text-center  cursor-default" style={{ userSelect: 'none' }}>
                 <h1 className="font-medium sm:text-xl text-center sm:leading-snug text-gray-900">
                     Hi, I am <span className="font-semibold text-yellow-600">Ciavel</span>, a BS Computer Science student currently in my 3rd Year at Batangas State University TNEU - Alangilan.
                 </h1>

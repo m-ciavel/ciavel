@@ -13,11 +13,16 @@ import { a } from '@react-spring/three'
 
 import greenhouseScene from '../assets/3d/stylized_mangrove_greenhouse.glb'
 
-const Greenhouse = ({isRotating, setIsRotating, setCurrentStage, currentFocusPoint, ...props}) => {
+const Greenhouse = ({isRotating, setIsRotating, setCurrentStage, currentFocusPoint, onLoad, ...props}) => {
     const greenhouseRef =useRef();
-
     const{ gl, viewport } = useThree();
     const { nodes, materials } = useGLTF(greenhouseScene)
+
+     useEffect(() => {
+        if (nodes && materials) {
+        onLoad(); 
+        }
+    }, [nodes, materials, onLoad]);
 
     const lastX = useRef(0);
     const rotationSpeed = useRef(0);
