@@ -25,7 +25,7 @@ const Projects = () => {
       description: 'Flashcard system to make studying engaging. You are here right now.',
       image: ciavelImg,
       tags:['React', 'Three.js', 'Tailwind CSS', 'Vite', 'Chart.js'],
-      link: 'https://github.com/ZAAALJLJ/ClashCards',
+      link: 'https://ciavel.vercel.app/',
     },
     {
       title: 'ClashCards',
