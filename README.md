@@ -21,7 +21,6 @@ Welcome to the source code of my personal portfolio website. This site highlight
 
 Check out the live portfolio here: [https://ciavel.vercel.app](https://ciavel.vercel.app)
 
-
 $~$
 ## Credits
 A part of the resources are taken from public sources.
