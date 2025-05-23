@@ -1,30 +1,10 @@
-import { useState } from 'react';
 import { FaEnvelope, FaGithubAlt, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import '../index.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add form submission logic here (e.g., send email or save data)
-  };
-
   return (
     <section className="w-full h-screen relative overflow-hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] sm:w-[125%] md:w-full max-w-none" style={{ filter: 'drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.5))' }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] sm:w-[125%] md:w-full max-w-none animate-slide-top" style={{ filter: 'drop-shadow(0px 4px 10px rgba(255, 255, 255, 0.5))' }}>
         <defs>
           <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" style={{ stopColor: '#4e73df', stopOpacity: 1 }} />
@@ -39,10 +19,21 @@ const Contact = () => {
         />
       </svg>
 
-      <div className="w-full h-full flex flex-col justify-center items-center text-white relative z-10 p-8 mt-12">
-        <h2 className="text-5xl mb-4 font-bold">Get in Touch</h2>
+      <div className="w-full h-full flex flex-col justify-center items-center text-white relative z-10 p-8 mt-8">
+        <div className="group cursor-pointer inline-block">
+          <h2 className="text-5xl font-bold mb-2 transition-all duration-500 ease-in-out group-hover:mb-8 group-hover:scale-105">
+            Get in Touch
+            <span
+              className="block w-[80%] h-1 mt-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out delay-150 mx-auto rounded-2xl"
+            ></span>
+          </h2>
+        </div>
+        
+        <p className="text-gray-300 text-center text-lg mb-6 font-semibold">
+          Feel free to reach out via email or connect with me on social media.
+        </p>
 
-        <div id="icons" className="flex space-x-6 mt-4 mb-16">
+        <div id="icons" className="flex space-x-6 mt-8 mb-16">
           {[
             { icon: <FaEnvelope />, href: "mailto:m.cap1218@gmail.com" },
             { icon: <FaGithubAlt />, href: "https://github.com/m-ciavel" },
@@ -51,61 +42,16 @@ const Contact = () => {
           ].map(({ icon, href }, index) => (
             <a
               key={index}
-              href={href}
-              className="text-2xl text-white p-3 rounded-full border-2 border-transparent hover:border-yellow-400 hover:shadow-lg hover:shadow-yellow-300 transition duration-300 ease-in-out"
+              href={href}  
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-4xl text-white p-3 rounded-full border-2 border-transparent hover:border-yellow-400 hover:shadow-lg hover:shadow-yellow-300 transition duration-300 ease-in-out"
             >
               {icon}
             </a>
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} className="w-full sm:w-3/4 md:w-1/2 bg-opacity-80 bg-black rounded-lg p-6 space-y-4">
-          <div className="flex flex-col">
-            <label htmlFor="name" className="text-lg">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-4 focus:ring-gradient-to-r focus:ring-amber-400 focus:ring-yellow-400 focus:outline-none"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="email" className="text-lg">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-4 focus:ring-gradient-to-r focus:ring-amber-400 focus:ring-yellow-400 focus:outline-none"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="message" className="text-lg">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              className="p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-4 focus:ring-gradient-to-r focus:ring-amber-400 focus:ring-yellow-400 focus:outline-none"
-              rows="4"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 focus:outline-none"
-          >
-            Submit
-          </button>
-        </form>
       </div>
     </section>
   );

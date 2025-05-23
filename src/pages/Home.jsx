@@ -73,7 +73,7 @@ const Home = () => {
       <div className="absolute bottom-5 left-0 right-0 z-20 text-center text-gray-500 text-xs">
           <p>
             "Stylized Mangrove Greenhouse" (https://skfb.ly/ovoBo) by Bársh is licensed under 
-            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline p-1">
               Creative Commons Attribution (CC BY 4.0)
             </a>
           </p>
