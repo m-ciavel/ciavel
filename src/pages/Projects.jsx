@@ -17,9 +17,9 @@ const Projects = () => {
   const projects = [
     {
       title: 'ciavel.',
-      description: 'Flashcard system to make studying engaging. You are here right now.',
+      description: 'Personal page built to explore and familiarize with Tailwind CSS and Three.js. You are here right now.',
       image: ciavelImg,
-      tags:['React', 'Three.js', 'Tailwind CSS', 'Vite', 'Chart.js'],
+      tags:['React', 'Three.js', 'Tailwind CSS', 'Vite'],
       link: 'https://ciavel.vercel.app/',
     },
     {
